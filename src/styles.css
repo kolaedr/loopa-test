@@ -1,0 +1,14 @@
+.hero-banner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f0f0f0;
+}
+
+.hexagon {
+  width: 100px;
+  height: 55px;
+  background-color: #ff6b6b;
+  clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
+}

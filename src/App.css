@@ -1,0 +1,11 @@
+.App {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.mySwiper {
+  width: 80%;
+  max-width: 600px;
+}

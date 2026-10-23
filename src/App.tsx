@@ -1,19 +1,26 @@
 import React from 'react';
-import { LanguageProvider, useLanguage } from './LanguageProvider';
-import { Welcome, Settings } from './components';
+import { motion } from 'framer-motion';
 
-const App: React.FC = () => {
-  const { language } = useLanguage();
-
+const HeroBanner = () => {
   return (
-    <LanguageProvider>
-      <div style={{ fontFamily: 'Arial, sans-serif' }}>
-        <h1>{language === 'en' ? 'Welcome' : 'Добро пожаловать'}</h1>
-        <button onClick={() => setLanguage(language === 'en' ? 'ru' : 'en')}>{language === 'en' ? 'Switch to Russian' : 'Перейти на английский'}</button>
-        <Welcome />
-        <Settings />
-      </div>
-    </LanguageProvider>
+    <motion.div
+      className='hero-banner'
+      initial={{ y: -100, opacity: 0 }}
+      animate={{ y: 0, opacity: 1, transition: { duration: 1 } }}
+    >
+      <motion.div
+        className='hexagon'
+        whileHover={{ scale: 1.1, transition: { duration: 0.2 } }}
+      ></motion.div>
+    </motion.div>
+  );
+};
+
+const App = () => {
+  return (
+    <div className='App'>
+      <HeroBanner />
+    </div>
   );
 };
 

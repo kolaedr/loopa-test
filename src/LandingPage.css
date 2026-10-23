@@ -1,0 +1,9 @@
+.bg-gray-100 { background-color: #f7fafc; }
+.min-h-screen { min-height: 100vh; }
+.flex { display: flex; }
+.items-center { align-items: center; }
+.justify-center { justify-content: center; }
+.text-center { text-align: center; }
+.text-4xl { font-size: 2.5rem; }
+.font-bold { font-weight: 700; }
+.mt-4 { margin-top: 1rem; }

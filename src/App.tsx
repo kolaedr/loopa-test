@@ -1,25 +1,18 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import './App.css';
+import SwiperComponent from './components/Swiper';
 
-const HeroBanner = () => {
-  return (
-    <motion.div
-      className='hero-banner'
-      initial={{ y: -100, opacity: 0 }}
-      animate={{ y: 0, opacity: 1, transition: { duration: 1 } }}
-    >
-      <motion.div
-        className='hexagon'
-        whileHover={{ scale: 1.1, transition: { duration: 0.2 } }}
-      ></motion.div>
-    </motion.div>
-  );
-};
+const App = () => {
+  const items = [
+    <div key="1">Card 1</div>,
+    <div key="2">Card 2</div>,
+    <div key="3">Card 3</div>,
+  ];
 
 const App = () => {
   return (
-    <div className='App'>
-      <HeroBanner />
+    <div className="App">
+      <SwiperComponent items={items} />
     </div>
   );
 };

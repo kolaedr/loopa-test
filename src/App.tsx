@@ -1,19 +1,18 @@
 import React from 'react';
-import { LanguageProvider, useLanguage } from './LanguageProvider';
-import { Welcome, Settings } from './components';
+import './App.css';
+import SwiperComponent from './components/Swiper';
 
-const App: React.FC = () => {
-  const { language } = useLanguage();
+const App = () => {
+  const items = [
+    <div key="1">Card 1</div>,
+    <div key="2">Card 2</div>,
+    <div key="3">Card 3</div>,
+  ];
 
   return (
-    <LanguageProvider>
-      <div style={{ fontFamily: 'Arial, sans-serif' }}>
-        <h1>{language === 'en' ? 'Welcome' : 'Добро пожаловать'}</h1>
-        <button onClick={() => setLanguage(language === 'en' ? 'ru' : 'en')}>{language === 'en' ? 'Switch to Russian' : 'Перейти на английский'}</button>
-        <Welcome />
-        <Settings />
-      </div>
-    </LanguageProvider>
+    <div className="App">
+      <SwiperComponent items={items} />
+    </div>
   );
 };
 

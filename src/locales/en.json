@@ -1,5 +1,16 @@
 {
   "welcome": "Welcome",
   "settings": "Settings",
-  "language": "Language"
+  "language": "Language",
+  "about": {
+    "title": "About Us",
+    "team": "Team",
+    "people": [
+      {
+        "name": "Name",
+        "role": "Role",
+        "biography": "Biography"
+      }
+    ]
+  }
 }

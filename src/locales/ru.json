@@ -1,5 +1,16 @@
 {
   "welcome": "Добро пожаловать",
   "settings": "Настройки",
-  "language": "Язык"
+  "language": "Язык",
+  "about": {
+    "title": "О нас",
+    "team": "Команда",
+    "people": [
+      {
+        "name": "Имя",
+        "role": "Роль",
+        "biography": "Биография"
+      }
+    ]
+  }
 }

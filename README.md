@@ -9,6 +9,7 @@ npm run dev
 npm run build
 npm run start
 npm run lint
+npm run test   # Vitest + React Testing Library
 ```
 
 Open [http://localhost:3000](http://localhost:3000). The health check is [http://localhost:3000/api/health](http://localhost:3000/api/health).

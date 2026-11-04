@@ -1,17 +1,17 @@
 import React from 'react';
-import './App.css';
-import SwiperComponent from './components/Swiper';
+import AdCampaigns from './components/AdCampaigns';
+import CampaignList from './components/CampaignList';
+import CampaignForm from './components/CampaignForm';
+import useAdCampaigns from './hooks/useAdCampaigns';
 
-const App = () => {
-  const items = [
-    <div key="1">Card 1</div>,
-    <div key="2">Card 2</div>,
-    <div key="3">Card 3</div>,
-  ];
+const App: React.FC = () => {
+  const campaigns = useAdCampaigns();
 
   return (
-    <div className="App">
-      <SwiperComponent items={items} />
+    <div>
+      <h1>Ad Campaigns Management</h1>
+      <CampaignForm onSubmit={newCampaign => console.log(newCampaign)} />
+      <CampaignList campaigns={campaigns} />
     </div>
   );
 };

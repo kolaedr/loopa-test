@@ -1,6 +1,14 @@
 {
+  "welcomeBanner": {
+    "text": "Ласкаво просимо до роботи"
+  },
   "hero": {
+    "title": "Loopa",
     "motivation": "мотивація працювати руками і частіше гуляти"
+  },
+  "home": {
+    "title": "Loopa",
+    "description": "Каркас застосунку на Next.js. Замініть цю сторінку, щоб почати розробку."
   },
   "footer": {
     "copyright": "© {year} Loopa. Усі права захищено.",

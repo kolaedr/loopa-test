@@ -100,7 +100,20 @@ export function Greeting() {
 }
 ```
 
-Add the new strings to every dictionary in `src/locales/`.
+Add the new strings to every dictionary in `src/locales/`. All dictionaries
+must have exactly the same keys — `src/locales/__tests__/locales.test.js`
+fails otherwise.
+
+### Which page strings are in the dictionaries?
+
+| Key                  | Used by                             |
+| -------------------- | ----------------------------------- |
+| `welcomeBanner.text` | `WelcomeBanner` text                |
+| `hero.title`         | `HeroSection` heading on the home page |
+| `hero.motivation`    | `HeroSection` subtitle              |
+| `home.title`         | Home page `<main>` heading          |
+| `home.description`   | Home page `<main>` paragraph        |
+| `footer.*`           | `Footer`                            |
 
 ### Where are the footer strings?
 

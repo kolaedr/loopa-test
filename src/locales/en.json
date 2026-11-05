@@ -1,6 +1,14 @@
 {
+  "welcomeBanner": {
+    "text": "Welcome to Work"
+  },
   "hero": {
+    "title": "Loopa",
     "motivation": "motivation to work with your hands and go for walks more often"
+  },
+  "home": {
+    "title": "Loopa",
+    "description": "Next.js app scaffold. Replace this page to start building."
   },
   "footer": {
     "copyright": "© {year} Loopa. All rights reserved.",

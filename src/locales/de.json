@@ -10,6 +10,14 @@
     "title": "Loopa",
     "description": "Next.js-App-Grundgerüst. Ersetze diese Seite, um mit der Entwicklung zu beginnen."
   },
+  "autumnCards": {
+    "card1Title": "Goldene Blätter",
+    "card1Description": "Beobachte, wie die Natur sich in den warmen Farben des Herbstes färbt",
+    "card2Title": "Erntezeit",
+    "card2Description": "Eine Zeit der Ernte und des Feierns der Früchte der Arbeit",
+    "card3Title": "Gemütlicher Herbst",
+    "card3Description": "Genießen Sie die Wärme und den Komfort kalter Herbsttage"
+  },
   "footer": {
     "copyright": "© {year} Loopa. Alle Rechte vorbehalten.",
     "currentDate": "Heute ist {date}",

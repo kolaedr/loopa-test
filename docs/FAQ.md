@@ -111,9 +111,15 @@ fails otherwise.
 | `welcomeBanner.text` | `WelcomeBanner` text                |
 | `hero.title`         | `HeroSection` heading on the home page |
 | `hero.motivation`    | `HeroSection` subtitle              |
-| `home.title`         | Home page `<main>` heading          |
-| `home.description`   | Home page `<main>` paragraph        |
+| `home.title`         | `HomeIntro` (home page `<main>`) heading   |
+| `home.description`   | `HomeIntro` (home page `<main>`) paragraph |
 | `footer.*`           | `Footer`                            |
+
+All of these components read the current language from `LanguageContext`, so
+every text on the home page changes when the footer language switcher is
+clicked. Outside `<LanguageProvider>` (e.g. in isolated unit tests)
+`WelcomeBanner` and `HomeIntro` fall back to English and `HeroSection` to its
+Ukrainian defaults.
 
 ### Where are the footer strings?
 

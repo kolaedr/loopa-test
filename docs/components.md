@@ -14,7 +14,7 @@ Hero banner with an indigo & turquoise colour scheme (task #216).
 ```jsx
 import { HeroSection } from "@/src/components/HeroSection"; // or a relative path
 
-<HeroSection title="Loopa">
+<HeroSection>
   <a href="/start">Почати</a>
 </HeroSection>
 ```
@@ -23,12 +23,14 @@ import { HeroSection } from "@/src/components/HeroSection"; // or a relative pat
 
 | Prop       | Type        | Required | Default                       | Description                                         |
 | ---------- | ----------- | -------- | ----------------------------- | --------------------------------------------------- |
-| `title`    | `ReactNode` | yes      | —                             | Main heading, rendered as `<h1>`.                   |
-| `subtitle` | `ReactNode` | no       | `hero.motivation` (uk)        | Supporting text in turquoise. Pass a falsy value to hide it. |
+| `title`    | `ReactNode` | no       | `hero.title` (current language) | Main heading, rendered as `<h1>`.                 |
+| `subtitle` | `ReactNode` | no       | `hero.motivation` (current language) | Supporting text in turquoise. Pass a falsy value to hide it. |
 | `children` | `ReactNode` | no       | —                             | Optional actions (e.g. CTA buttons), placed below the subtitle. |
 
-The module also exports `HERO_MOTIVATION_TEXT`, the default subtitle
-(`uk.hero.motivation` = «мотивація працювати руками і частіше гуляти»).
+The module also exports `HERO_MOTIVATION_TEXT` and `HERO_TITLE_TEXT`, the
+Ukrainian fallbacks (`uk.hero.motivation` = «мотивація працювати руками і
+частіше гуляти», `uk.hero.title`) used when the component is rendered outside
+`<LanguageProvider>`.
 
 ### Localisation
 
@@ -41,8 +43,10 @@ dictionary:
 | `src/locales/en.json` | motivation to work with your hands and go for walks more often         |
 | `src/locales/de.json` | Motivation, mit den Händen zu arbeiten und öfter spazieren zu gehen    |
 
-The component defaults to the Ukrainian string. For other languages pass the
-dictionary value as `subtitle`, e.g. `<HeroSection title="…" subtitle={en.hero.motivation} />`.
+Since task #226 the component is a Client Component and reads `hero.title` and
+`hero.motivation` for the language selected in the footer switcher
+(`LanguageContext`), so it is translated automatically. Explicit `title` /
+`subtitle` props always win, e.g. `<HeroSection title="…" subtitle={en.hero.motivation} />`.
 When adding a new language, add `hero.motivation` to its dictionary and add the
 dictionary to the "every language dictionary" test in `HeroSection.test.jsx`,
 which checks a fixed list (`uk`, `en`, `de`).

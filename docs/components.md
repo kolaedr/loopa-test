@@ -5,7 +5,8 @@
 Hero banner with an indigo & turquoise colour scheme (task #216).
 
 - Component: `src/components/HeroSection.jsx`
-- Styles: `src/styles/HeroSection.module.css` (CSS module)
+- Styles: Tailwind utility classes in the component (no CSS module — `next.config`
+  compiles every `.css` file as global)
 - Tests: `src/components/__tests__/HeroSection.test.jsx`
 
 ### Usage

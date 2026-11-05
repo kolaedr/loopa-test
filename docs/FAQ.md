@@ -27,9 +27,11 @@ import en from "../locales/en.json";
 
 ### How do I change the colours?
 
-Edit the custom properties (`--hero-indigo`, `--hero-indigo-light`,
-`--hero-turquoise`, `--hero-turquoise-dark`) at the top of the `.hero` rule in
-`src/styles/HeroSection.module.css`. The tests check that the palette stays
+Edit the Tailwind utility classes on the `<section>` in
+`src/components/HeroSection.jsx` (`bg-indigo-600 bg-gradient-to-br
+from-indigo-600 to-cyan-500`, plus `bg-cyan-300` on the accent bar). CSS modules
+are not used: `next.config` compiles every `.css` file as global, so the hero is
+styled with Tailwind like `WelcomeBanner`. The tests check that the palette stays
 indigo and turquoise, so update `src/components/__tests__/HeroSection.test.jsx`
 if you move to shades outside the accepted list.
 

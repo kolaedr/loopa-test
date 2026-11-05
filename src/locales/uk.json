@@ -1,5 +1,15 @@
 {
   "hero": {
     "motivation": "мотивація працювати руками і частіше гуляти"
+  },
+  "footer": {
+    "copyright": "© {year} Loopa. Усі права захищено.",
+    "currentDate": "Сьогодні {date}",
+    "languageSwitcherLabel": "Оберіть мову",
+    "languages": {
+      "en": "English",
+      "uk": "Українська",
+      "de": "Deutsch"
+    }
   }
 }

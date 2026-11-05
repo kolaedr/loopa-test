@@ -1,5 +1,15 @@
 {
   "hero": {
     "motivation": "Motivation, mit den Händen zu arbeiten und öfter spazieren zu gehen"
+  },
+  "footer": {
+    "copyright": "© {year} Loopa. Alle Rechte vorbehalten.",
+    "currentDate": "Heute ist {date}",
+    "languageSwitcherLabel": "Sprache auswählen",
+    "languages": {
+      "en": "English",
+      "uk": "Українська",
+      "de": "Deutsch"
+    }
   }
 }

@@ -1,5 +1,15 @@
 {
   "hero": {
     "motivation": "motivation to work with your hands and go for walks more often"
+  },
+  "footer": {
+    "copyright": "© {year} Loopa. All rights reserved.",
+    "currentDate": "Today is {date}",
+    "languageSwitcherLabel": "Select language",
+    "languages": {
+      "en": "English",
+      "uk": "Українська",
+      "de": "Deutsch"
+    }
   }
 }

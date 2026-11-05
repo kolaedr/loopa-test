@@ -1,5 +1,23 @@
 {
+  "welcomeBanner": {
+    "text": "Willkommen bei der Arbeit"
+  },
   "hero": {
+    "title": "Loopa",
     "motivation": "Motivation, mit den Händen zu arbeiten und öfter spazieren zu gehen"
+  },
+  "home": {
+    "title": "Loopa",
+    "description": "Next.js-App-Grundgerüst. Ersetze diese Seite, um mit der Entwicklung zu beginnen."
+  },
+  "footer": {
+    "copyright": "© {year} Loopa. Alle Rechte vorbehalten.",
+    "currentDate": "Heute ist {date}",
+    "languageSwitcherLabel": "Sprache auswählen",
+    "languages": {
+      "en": "English",
+      "uk": "Українська",
+      "de": "Deutsch"
+    }
   }
 }

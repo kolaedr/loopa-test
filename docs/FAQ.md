@@ -48,3 +48,79 @@ npm run test
 ### Did the hero section require a database change?
 
 No. It is a presentation-only component with no schema or API changes.
+
+## Footer and language switcher
+
+### What does the footer show?
+
+On the left, a copyright line with the current year and today's date. On the
+right, a language switcher (English, Українська, Deutsch). See
+[components.md](./components.md#footer) for details.
+
+### Do I need to update the year in the footer every January?
+
+No. The year and date come from the visitor's clock. The footer re-renders at
+local midnight, so the year changes on 1 January even if the page stays open.
+
+### Why is the date missing in the page source / for a moment on load?
+
+The date is left empty in the server-rendered HTML and added right after
+hydration. This prevents hydration errors when the server and the visitor's
+browser have different clocks or time zones.
+
+### How does the language switcher work?
+
+Clicking a language calls `setLanguage` from `LanguageContext`. Every
+component that uses `useLanguage()` re-renders with the new dictionary, and
+`<html lang>` is updated.
+
+### Is the chosen language remembered?
+
+Yes. It's saved in `localStorage` under `loopa.language` and restored on the
+next visit. It's also synced across open tabs. If `localStorage` is blocked,
+switching still works but resets to English after a reload.
+
+### What is the default language?
+
+English (`en`). The server always renders English. A saved choice is applied
+right after the page loads.
+
+### How do I translate my own component?
+
+Make it a Client Component and read the dictionary from the context:
+
+```tsx
+"use client";
+
+import { useLanguage } from "@/app/context/LanguageContext";
+
+export function Greeting() {
+  const { dictionary } = useLanguage();
+  return <p>{dictionary.hero.motivation}</p>;
+}
+```
+
+Add the new strings to every dictionary in `src/locales/`.
+
+### Where are the footer strings?
+
+Under the `footer` key in `src/locales/en.json`, `uk.json` and `de.json`.
+`{year}` and `{date}` are placeholders filled in by the component.
+
+### How do I add a new language?
+
+Add a dictionary file, add its name under `footer.languages` in every
+dictionary, and register it in `DICTIONARIES` in
+`app/context/LanguageContext.tsx`. See
+[components.md](./components.md#adding-a-language).
+
+### How do I run the footer tests?
+
+```bash
+npm run test
+```
+
+### Did the footer require a database change?
+
+No. The language choice is stored only in the browser; there are no schema or
+API changes.

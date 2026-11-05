@@ -1,0 +1,64 @@
+/*
+ * Hero section — indigo & turquoise colour scheme (task #216).
+ * Palette values are exposed as custom properties so they can be
+ * tuned in one place once design confirms the exact hex values.
+ */
+.hero {
+  --hero-indigo: #4b0082;
+  --hero-indigo-light: #4f46e5;
+  --hero-turquoise: #40e0d0;
+  --hero-turquoise-dark: #0d9488;
+  --hero-text: #ffffff;
+
+  position: relative;
+  display: flex;
+  width: 100%;
+  min-height: 60vh;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 6rem 1.5rem;
+  background-color: var(--hero-indigo);
+  background-image: linear-gradient(
+    135deg,
+    var(--hero-indigo) 0%,
+    var(--hero-indigo-light) 45%,
+    var(--hero-turquoise-dark) 80%,
+    var(--hero-turquoise) 100%
+  );
+  color: var(--hero-text);
+  text-align: center;
+}
+
+.content {
+  position: relative;
+  max-width: 48rem;
+}
+
+.title {
+  margin: 0;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.accent {
+  display: block;
+  width: 4rem;
+  height: 0.25rem;
+  margin: 1.5rem auto;
+  border-radius: 9999px;
+  background-color: var(--hero-turquoise);
+}
+
+.subtitle {
+  margin: 0;
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
+  line-height: 1.6;
+  color: var(--hero-turquoise);
+}
+
+.actions {
+  margin-top: 2rem;
+}

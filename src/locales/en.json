@@ -10,6 +10,14 @@
     "title": "Loopa",
     "description": "Next.js app scaffold. Replace this page to start building."
   },
+  "autumnCards": {
+    "card1Title": "Golden Leaves",
+    "card1Description": "Watch as nature paints itself in the warm colors of autumn",
+    "card2Title": "Harvest Time",
+    "card2Description": "A period of gathering harvests and celebrating the fruits of labor",
+    "card3Title": "Cozy Autumn",
+    "card3Description": "Enjoy the warmth and comfort of chilly autumn days"
+  },
   "footer": {
     "copyright": "© {year} Loopa. All rights reserved.",
     "currentDate": "Today is {date}",

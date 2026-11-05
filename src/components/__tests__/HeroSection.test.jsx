@@ -1,40 +1,21 @@
-import { readFileSync } from "node:fs";
+import { existsSync } from "node:fs";
 import { resolve } from "node:path";
 import { afterEach, describe, expect, it } from "vitest";
 import { cleanup, render, screen } from "@testing-library/react";
 import { HeroSection, HERO_MOTIVATION_TEXT } from "../HeroSection";
+import Home from "../../../app/page";
 import uk from "../../locales/uk.json";
 import en from "../../locales/en.json";
 import de from "../../locales/de.json";
-// Raw stylesheet source: jsdom does not compute CSS-module styles, so the
-// colour scheme is asserted against the declarations themselves.
-const css = readFileSync(
-  resolve(import.meta.dirname, "../../styles/HeroSection.module.css"),
-  "utf8",
-);
 
 afterEach(cleanup);
 
 const MOTIVATION_UK = "мотивація працювати руками і частіше гуляти";
 
-/** Returns the body of the first `selector { ... }` rule in the stylesheet. */
-function ruleBody(selector) {
-  const escaped = selector.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-  const match = css.match(new RegExp(`${escaped}\\s*\\{([^}]*)\\}`));
-  if (!match) throw new Error(`CSS rule "${selector}" not found`);
-  return match[1];
+/** Splits an element's className into a list of Tailwind utility classes. */
+function classesOf(element) {
+  return element.className.split(/\s+/).filter(Boolean);
 }
-
-/** Reads the value of a custom property declared on `.hero`. */
-function heroVar(name) {
-  const match = ruleBody(".hero").match(
-    new RegExp(`${name}\\s*:\\s*([^;]+);`),
-  );
-  return match ? match[1].trim().toLowerCase() : undefined;
-}
-
-const INDIGO = /^#(4b0082|4f46e5|6366f1|3f51b5|4338ca|3730a3|312e81)$/;
-const TURQUOISE = /^#(40e0d0|48d1cc|00ced1|30d5c8|0d9488|14b8a6|2dd4bf)$/;
 
 describe("HeroSection — AC0: motivational text", () => {
   it('shows "мотивація працювати руками і частіше гуляти" by default', () => {
@@ -70,42 +51,78 @@ describe("HeroSection — AC0: motivational text", () => {
   });
 });
 
-describe("HeroSection — AC1: indigo & turquoise colours", () => {
-  it("declares indigo and turquoise palette variables", () => {
-    expect(heroVar("--hero-indigo")).toMatch(INDIGO);
-    expect(heroVar("--hero-indigo-light")).toMatch(INDIGO);
-    expect(heroVar("--hero-turquoise")).toMatch(TURQUOISE);
-    expect(heroVar("--hero-turquoise-dark")).toMatch(TURQUOISE);
-  });
-
-  it("paints the section background with an indigo → turquoise gradient", () => {
-    const hero = ruleBody(".hero");
-    expect(hero).toMatch(/background-color:\s*var\(--hero-indigo\)/);
-    const gradient = hero.match(/linear-gradient\(([\s\S]*?)\);/);
-    expect(gradient).not.toBeNull();
-    const stops = gradient[1];
-    expect(stops).toContain("var(--hero-indigo)");
-    expect(stops).toContain("var(--hero-turquoise)");
-    expect(stops.indexOf("var(--hero-indigo)")).toBeLessThan(
-      stops.indexOf("var(--hero-turquoise)"),
-    );
-  });
-
-  it("renders the subtitle and accent in turquoise", () => {
-    expect(ruleBody(".subtitle")).toMatch(/color:\s*var\(--hero-turquoise\)/);
-    expect(ruleBody(".accent")).toMatch(
-      /background-color:\s*var\(--hero-turquoise\)/,
-    );
-  });
-
-  it("applies the coloured style classes to the rendered markup", () => {
-    const { container } = render(<HeroSection title="Loopa" />);
+describe("HeroSection — AC1: indigo & turquoise colours (Tailwind)", () => {
+  it("paints the section with an indigo → turquoise gradient", () => {
+    render(<HeroSection title="Loopa" />);
     const hero = screen.getByTestId("hero-section");
     expect(hero.tagName).toBe("SECTION");
-    expect(hero.className).toMatch(/hero/);
-    expect(screen.getByText(MOTIVATION_UK).className).toMatch(/subtitle/);
-    expect(container.querySelector('[aria-hidden="true"]').className).toMatch(
-      /accent/,
+    const classes = classesOf(hero);
+    expect(classes).toContain("bg-gradient-to-br");
+    expect(classes).toContain("from-indigo-600");
+    expect(classes).toContain("to-cyan-500");
+    // Solid indigo fallback underneath the gradient.
+    expect(classes).toContain("bg-indigo-600");
+  });
+
+  it("uses white text on the gradient", () => {
+    render(<HeroSection title="Loopa" />);
+    expect(classesOf(screen.getByTestId("hero-section"))).toContain(
+      "text-white",
     );
+    expect(classesOf(screen.getByText(MOTIVATION_UK))).toContain("text-white");
+  });
+
+  it("renders a turquoise accent bar", () => {
+    const { container } = render(<HeroSection title="Loopa" />);
+    const accent = container.querySelector('[aria-hidden="true"]');
+    expect(accent).not.toBeNull();
+    expect(classesOf(accent).some((c) => /^bg-cyan-\d+$/.test(c))).toBe(true);
+  });
+
+  it("is at least 60vh tall and centres its content", () => {
+    render(<HeroSection title="Loopa" />);
+    const classes = classesOf(screen.getByTestId("hero-section"));
+    expect(classes).toContain("min-h-[60vh]");
+    expect(classes).toContain("flex");
+    expect(classes).toContain("items-center");
+    expect(classes).toContain("justify-center");
+  });
+
+  it("does not rely on CSS-module class names", () => {
+    render(<HeroSection title="Loopa" />);
+    const hero = screen.getByTestId("hero-section");
+    for (const el of [hero, ...hero.querySelectorAll("*")]) {
+      for (const c of classesOf(el)) {
+        // CSS-module output looks like `HeroSection_hero__a1b2c` / `_hero_x1`.
+        expect(c).not.toMatch(/__|^_/);
+      }
+    }
+  });
+
+  it("no longer ships HeroSection.module.css", () => {
+    const cssPath = resolve(
+      import.meta.dirname,
+      "../../styles/HeroSection.module.css",
+    );
+    expect(existsSync(cssPath)).toBe(false);
+  });
+});
+
+describe("HeroSection on the home page", () => {
+  it("is rendered after the WelcomeBanner", () => {
+    render(<Home />);
+    const banner = screen.getByRole("banner");
+    const hero = screen.getByTestId("hero-section");
+    expect(
+      banner.compareDocumentPosition(hero) & Node.DOCUMENT_POSITION_FOLLOWING,
+    ).toBeTruthy();
+    expect(hero.textContent).toContain(MOTIVATION_UK);
+  });
+
+  it("is offset below the fixed banner so it is not covered", () => {
+    render(<Home />);
+    expect(classesOf(screen.getByRole("banner"))).toContain("fixed");
+    // Banner is ~52px tall (py-3 + text-lg); mt-14 = 56px clears it.
+    expect(classesOf(screen.getByTestId("hero-section"))).toContain("mt-14");
   });
 });

@@ -18,7 +18,7 @@ export function WelcomeBanner() {
   return (
     <div
       role="banner"
-      className="fixed inset-x-0 top-0 z-[9999] bg-zinc-950/90 px-4 py-3 text-center text-lg font-semibold tracking-tight text-amber-500 shadow-md backdrop-blur"
+      className="fixed inset-x-0 top-0 z-[9999] bg-blue-900 px-4 py-3 text-center text-lg font-semibold tracking-tight text-white shadow-md backdrop-blur"
     >
       {text}
     </div>

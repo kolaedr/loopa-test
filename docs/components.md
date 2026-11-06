@@ -191,3 +191,50 @@ dictionary.
 - Switcher buttons are native `<button>`s, reachable with the keyboard, with a
   visible focus outline.
 - Test ids: `footer-copyright`, `footer-date`, `language-switcher`.
+
+## QuoteBlock
+
+Quote block component displayed below AutumnCards on the home page, featuring a
+Latin quote with localized translation (task #245).
+
+- Component: `app/components/quote-block.tsx` (Client Component)
+- Tests: `app/components/quote-block.test.tsx`
+- Usage: renders on the home page via `app/page.tsx`
+
+### Usage
+
+```tsx
+import { QuoteBlock } from "@/app/components/quote-block";
+
+<QuoteBlock />
+```
+
+The component uses `LanguageContext` to automatically display the quote in the
+selected language, so it must be rendered inside `<LanguageProvider>` (or
+`<Providers>`).
+
+### Design
+
+- **Background:** Blue gradient (`from-blue-900 to-blue-600`), creating visual
+  separation from preceding AutumnCards.
+- **Layout:** Centered text with maximum width of 2xl (`max-w-2xl`), responsive
+  padding (`px-6 py-16 sm:py-20`).
+- **Typography:**
+  - Latin quote: italic, semibold (`text-lg`), light blue text (`text-blue-50`)
+    with quotation marks for clarity.
+  - Translation: regular weight, base text size (`text-base`), lighter blue
+    (`text-blue-100`) for readability over the gradient background.
+
+### Localization
+
+The quote content lives under the `quoteBlock` key in every language dictionary
+(`src/locales/en.json`, `uk.json`, `de.json`):
+
+| Key              | Content type   |
+| ---------------- | -------------- |
+| `quoteBlock.latin` | Latin quote    |
+| `quoteBlock.translation` | Localized translation |
+
+The component reads from `LanguageContext` and updates automatically when the
+language changes. When rendered outside `<LanguageProvider>`, it falls back to
+the default language dictionary.

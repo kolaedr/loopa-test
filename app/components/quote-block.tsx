@@ -13,19 +13,19 @@ export function QuoteBlock() {
 
   return (
     <section
-      className="w-full bg-gradient-to-b from-gray-50 to-gray-100 px-6 py-16 sm:py-20"
+      className="w-full bg-gradient-to-b from-blue-900 to-blue-600 px-6 py-16 sm:py-20"
       data-testid="quote-block-section"
     >
       <div className="mx-auto max-w-2xl">
         <blockquote className="text-center">
           <p
-            className="mb-4 text-lg font-semibold italic text-gray-800"
+            className="mb-4 text-lg font-semibold italic text-blue-50"
             data-testid="quote-latin"
           >
             &ldquo;{quoteBlock.latin}&rdquo;
           </p>
           <p
-            className="text-base text-gray-600"
+            className="text-base text-blue-100"
             data-testid="quote-translation"
           >
             {quoteBlock.translation}

@@ -65,7 +65,7 @@ describe("QuoteBlock — rendering", () => {
 });
 
 describe("QuoteBlock — styling", () => {
-  it("uses gradient background from gray-50 to gray-100", () => {
+  it("uses gradient background from blue-900 to blue-600", () => {
     render(
       <LanguageProvider>
         <QuoteBlock />
@@ -73,8 +73,8 @@ describe("QuoteBlock — styling", () => {
     );
     const section = screen.getByTestId("quote-block-section");
     expect(classesOf(section)).toContain("bg-gradient-to-b");
-    expect(classesOf(section)).toContain("from-gray-50");
-    expect(classesOf(section)).toContain("to-gray-100");
+    expect(classesOf(section)).toContain("from-blue-900");
+    expect(classesOf(section)).toContain("to-blue-600");
   });
 
   it("has full width with padding", () => {
@@ -114,14 +114,14 @@ describe("QuoteBlock — styling", () => {
     expect(classesOf(latín)).toContain("font-semibold");
   });
 
-  it("styles translation with gray text", () => {
+  it("styles translation with light blue text", () => {
     render(
       <LanguageProvider>
         <QuoteBlock />
       </LanguageProvider>,
     );
     const translation = screen.getByTestId("quote-translation");
-    expect(classesOf(translation)).toContain("text-gray-600");
+    expect(classesOf(translation)).toContain("text-blue-100");
   });
 
   it("centers text alignment", () => {

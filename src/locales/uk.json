@@ -18,6 +18,10 @@
     "card3Title": "Уютна осінь",
     "card3Description": "Насолоджуйтесь теплом та затишком холодних осінніх днів"
   },
+  "quoteBlock": {
+    "latin": "Carpe diem",
+    "translation": "Насолоджуйся днем"
+  },
   "footer": {
     "copyright": "© {year} Loopa. Усі права захищено.",
     "currentDate": "Сьогодні {date}",

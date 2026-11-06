@@ -6,11 +6,11 @@ import Home from "../page";
 afterEach(cleanup);
 
 describe("WelcomeBanner", () => {
-  it('renders the "Welcome to Work" text in amber', () => {
+  it('renders the "Welcome to Work" text in white', () => {
     render(<WelcomeBanner />);
     const banner = screen.getByRole("banner");
     expect(banner.textContent).toBe("Welcome to Work");
-    expect(banner.className).toContain("text-amber-500");
+    expect(banner.className).toContain("text-white");
   });
 
   it("is fixed and layered above all other elements", () => {

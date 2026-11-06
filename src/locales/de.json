@@ -18,6 +18,10 @@
     "card3Title": "Gemütlicher Herbst",
     "card3Description": "Genießen Sie die Wärme und den Komfort kalter Herbsttage"
   },
+  "quoteBlock": {
+    "latin": "Carpe diem",
+    "translation": "Nutze den Tag"
+  },
   "footer": {
     "copyright": "© {year} Loopa. Alle Rechte vorbehalten.",
     "currentDate": "Heute ist {date}",

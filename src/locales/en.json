@@ -18,6 +18,10 @@
     "card3Title": "Cozy Autumn",
     "card3Description": "Enjoy the warmth and comfort of chilly autumn days"
   },
+  "quoteBlock": {
+    "latin": "Carpe diem",
+    "translation": "Seize the day"
+  },
   "footer": {
     "copyright": "© {year} Loopa. All rights reserved.",
     "currentDate": "Today is {date}",
